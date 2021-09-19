@@ -3,8 +3,13 @@ const require = (url) =>{
         var script = document.createElement("script");  // create a script DOM node
         script.src = window.apiSupport+url;  // set its src to the provided URL
         document.head.appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
-    }
+}
 
+const requireCDN = (url) =>{
+    var script = document.createElement("script");  // create a script DOM node
+    script.src = url;  // set its src to the provided URL
+    document.head.appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+}
 const screenShot = () => {
     const modalLoaded = document.getElementById("modal_support");
     if(modalLoaded) modalLoaded.remove();
@@ -35,7 +40,7 @@ const saveAs = (uri, filename) =>{
 }
 const logo = (clickAction) => {
     var div = document.createElement("div");   // Create a <button> element
-    div.innerHTML = "SAP";       
+    div.innerHTML = "SPRO";       
     div.setAttribute("style", "bottom:0%; left: 50%; color: blue; position:fixed;width:5%;height:2%;font-weight: bold;")    
     div.onclick = clickAction
     div.setAttribute("id", "modal_support_initial");   
@@ -57,4 +62,4 @@ const getBrowser = () => {
             default: return "Other";
         }
 }
-export {require, screenShot, logo, getBrowser, saveAs};
+export {require, screenShot, logo, getBrowser, saveAs, requireCDN};

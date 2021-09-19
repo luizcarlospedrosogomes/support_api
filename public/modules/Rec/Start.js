@@ -88,7 +88,7 @@ const  startRecording = async () =>{
        
        recorder = RecordRTC(screen, {
             type: 'gif',
-            frameRate: 200,
+            frameRate: 1,
             quality: 30,            
             width: 1200,
             height: 800,
