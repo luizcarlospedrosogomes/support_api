@@ -25,6 +25,6 @@ app.use(function(req, res, next) {
      } 
     next(); 
 }); 
-app.get("/", (req, res) => res.status(200).json({msg: 'api'}));
+app.get("/", (req, res) => res.status(200).json({msg: 'Sou a SUPPORT API'}));
 app.use(express.static('public'));
 app.listen(9000, () => console.log('Server ativo na porta 9000'));
