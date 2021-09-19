@@ -2,13 +2,13 @@
 const require = (url) =>{
         var script = document.createElement("script");  // create a script DOM node
         script.src = window.apiSupport+url;  // set its src to the provided URL
-        document.head.appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+        document.getElementsByTagName('head')[0].appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
 }
 
 const requireCDN = (url) =>{
     var script = document.createElement("script");  // create a script DOM node
     script.src = url;  // set its src to the provided URL
-    document.head.appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+    document.getElementsByTagName('head')[0].appendChild(script);  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
 }
 const screenShot = () => {
     const modalLoaded = document.getElementById("modal_support");
@@ -62,4 +62,7 @@ const getBrowser = () => {
             default: return "Other";
         }
 }
-export {require, screenShot, logo, getBrowser, saveAs, requireCDN};
+const sleep = (time) =>{
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+export {require, screenShot, logo, getBrowser, saveAs, requireCDN, sleep};

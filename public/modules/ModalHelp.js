@@ -5,7 +5,7 @@ import {ButtonDoc}  from './Doc/ButtonDoc.js';
 
 const cssModal = `  display: none; /* Hidden by default */
                     position: fixed; /* Stay in place */
-                    z-index: 1; /* Sit on top */
+                    z-index: 2147483647 !important; /* Sit on top */
                     padding-top: 100px; /* Location of the box */
                     bottom: 0;
                     left: 0;

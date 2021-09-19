@@ -30,7 +30,7 @@ const cssClose = ` color: #aaaaaa;
                     font-weight: bold;`
 
 const Modal = async (target) =>{  
-    console.log(target.name)
+    
     document.body.style.cursor = 'wait'
     const url                  = `${scheme}${host}${org}${project}_apis/wiki/wikis/${wiki}/pages/Documentacao/Form-Teste/Input-${target.name}`;
 
@@ -42,41 +42,48 @@ const Modal = async (target) =>{
         const md = new Remarkable();
         const content = md.render(response);
         openModal(content)
+    }else{
+        closeModal()
     }
    
     document.body.style.cursor = 'default';
 }
 
+const closeModal = ()=>{
+    const modalLoaded = document.getElementById("modal_doc");    
+    if(modalLoaded) modalLoaded.remove();
+}
 const openModal = (content) =>{
     const modalLoaded = document.getElementById("modal_doc");
-        if(modalLoaded) modalLoaded.remove();
+    console.log(modalLoaded)
+    if(modalLoaded) modalLoaded.remove();
 
-        const divModal = document.createElement("div");
-        divModal.setAttribute("id", "modal_doc");    
-        divModal.setAttribute("class", "modal_doc");
-        divModal.setAttribute("style", cssModal);
+    const divModal = document.createElement("div");
+    divModal.setAttribute("id", "modal_doc");    
+    divModal.setAttribute("class", "modal_doc");
+    divModal.setAttribute("style", cssModal);
 
-        const divModalContent = document.createElement("div")
-        divModalContent.setAttribute("class", "modal_support_content");
-        divModalContent.setAttribute("style", cssModalContent)
+    const divModalContent = document.createElement("div")
+    divModalContent.setAttribute("class", "modal_doc_content");
+    divModalContent.setAttribute("style", cssModalContent)
 
-        const divModalSpanClose = document.createElement("span")
-        divModalSpanClose.innerHTML = `&times;`;
-        divModalSpanClose.setAttribute("style", cssClose);
-        divModalSpanClose.setAttribute("class", "close_modal_doc");      
-        const divModalTitle = document.createElement("p");
-        divModalTitle.innerHTML=content;
+    const divModalSpanClose = document.createElement("span")
+    divModalSpanClose.innerHTML = `&times;`;
+    divModalSpanClose.setAttribute("style", cssClose);
+    divModalSpanClose.setAttribute("class", "close_modal_doc");      
+    const divModalTitle = document.createElement("p");
+    divModalTitle.innerHTML=content;
 
-        divModalContent.appendChild(divModalSpanClose)
-        divModalContent.appendChild(divModalTitle)
-        
-        divModal.appendChild(divModalContent)
-        document.body.appendChild(divModal);  
-        const span = document.getElementsByClassName("close_modal_doc")[0];
-        
-        span.onclick = () => {            
-            divModal.style.display = "none";
-        }
-        divModal.style.display = "block";
+    divModalContent.appendChild(divModalSpanClose)
+    divModalContent.appendChild(divModalTitle)
+    
+    divModal.appendChild(divModalContent)
+    document.body.appendChild(divModal);  
+    const span = document.getElementsByClassName("close_modal_doc")[0];
+    
+    span.onclick = () => {            
+        divModal.style.display = "none";
+    }
+    divModal.style.display = "block";
 }
 export {Modal};
