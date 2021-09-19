@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+    support-api:
+        container_name: support-api
+        build:
+          context: ./
+        volumes:
+          - .:/src
+          - /src/node_modules                
+        command: npm run start
+        ports:
+          - "9000:9000"    
+        environment:
+          NODE_ENV: development
+          DEBUG: nodejs-docker-express:*
+        networks:
+          - nginx-manager-proxy_default
+networks:
+  nginx-manager-proxy_default:
+    external: true
