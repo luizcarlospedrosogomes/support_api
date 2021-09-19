@@ -18,6 +18,7 @@ steps:
 - script: |
     npm install    
   displayName: 'npm install'
+  enabled: false
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Pipeline.Workspace)'
