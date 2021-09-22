@@ -34,9 +34,14 @@ const Modal = async (target) =>{
     document.body.style.cursor = 'wait'
     const url                  = `${scheme}${host}${org}${project}_apis/wiki/wikis/${wiki}/pages/Documentacao/Form-Teste/Input-${target.name}`;
 
-    const myRequest = new Request(url, { headers: new Headers({'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'})});
+    const PATToken = '4fsmve3etirghupiv2kmdxz4vq3p3mlnvxjr6vladr4kwc2vr3xq';
+    const headers = {
+        'accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        Authorization: 'Basic ' + btoa("" + ":" + PATToken)
+    }
+    const myRequest = new Request(url, { headers: new Headers(headers)});
     let response    = await fetch(myRequest);
-
+    console.log(response)
     if(response.ok){
         response        = await response.text();
         const md = new Remarkable();
